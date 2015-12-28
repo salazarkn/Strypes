@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MongoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:10011/MongoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:10011/MongoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:10011/MongoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Strypes.Services" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMongoService_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_GetProductsBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsBy" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_GetProductsBy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_InsertCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_InsertCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_DeleteCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_DeleteCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_UpdateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_UpdateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_GetProductsByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_GetProductsByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_InsertProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProduct" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_InsertProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_DeleteProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProduct" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_DeleteProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_UpdateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProduct" />
+  </wsdl:message>
+  <wsdl:message name="IMongoService_UpdateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMongoService">
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/GetCategories" message="tns:IMongoService_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/GetCategoriesResponse" message="tns:IMongoService_GetCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/GetProducts" message="tns:IMongoService_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/GetProductsResponse" message="tns:IMongoService_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsBy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/GetProductsBy" message="tns:IMongoService_GetProductsBy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/GetProductsByResponse" message="tns:IMongoService_GetProductsBy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/InsertCategory" message="tns:IMongoService_InsertCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/InsertCategoryResponse" message="tns:IMongoService_InsertCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/DeleteCategory" message="tns:IMongoService_DeleteCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/DeleteCategoryResponse" message="tns:IMongoService_DeleteCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/UpdateCategory" message="tns:IMongoService_UpdateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/UpdateCategoryResponse" message="tns:IMongoService_UpdateCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/GetProductsByCategory" message="tns:IMongoService_GetProductsByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/GetProductsByCategoryResponse" message="tns:IMongoService_GetProductsByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/InsertProduct" message="tns:IMongoService_InsertProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/InsertProductResponse" message="tns:IMongoService_InsertProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/DeleteProduct" message="tns:IMongoService_DeleteProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/DeleteProductResponse" message="tns:IMongoService_DeleteProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMongoService/UpdateProduct" message="tns:IMongoService_UpdateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMongoService/UpdateProductResponse" message="tns:IMongoService_UpdateProduct_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMongoService" type="tns:IMongoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsBy">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/GetProductsBy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCategory">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/InsertCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/UpdateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByCategory">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/GetProductsByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertProduct">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/InsertProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/DeleteProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <soap:operation soapAction="http://tempuri.org/IMongoService/UpdateProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MongoService">
+    <wsdl:port name="BasicHttpBinding_IMongoService" binding="tns:BasicHttpBinding_IMongoService">
+      <soap:address location="http://localhost:10011/MongoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

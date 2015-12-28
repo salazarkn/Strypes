@@ -1,0 +1,11 @@
+C:\Work\Strypes\Strypes.Services\obj\Debug\Strypes.Services.csprojResolveAssemblyReference.cache
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\bin\Strypes.Services.dll.config
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\bin\Strypes.Services.dll
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\bin\Strypes.Services.pdb
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\bin\MongoDB.Bson.dll
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\bin\MongoDB.Driver.dll
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\bin\MongoDB.Bson.xml
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\bin\MongoDB.Driver.xml
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\obj\Debug\Strypes.Services.csprojResolveAssemblyReference.cache
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\obj\Debug\Strypes.Services.dll
+C:\Users\yraykov\Desktop\StrypesTask-master\Strypes.Services\obj\Debug\Strypes.Services.pdb

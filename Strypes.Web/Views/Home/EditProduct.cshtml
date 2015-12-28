@@ -1,0 +1,30 @@
+﻿@model Strypes.Web.Models.ProductModel
+
+@using (Html.BeginForm("EditProduct", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <text>
+
+        @Html.HiddenFor(m => m.Category)
+        @Html.HiddenFor(m => m.CategoryId)
+        @Html.HiddenFor(m => m._id)
+        @Html.LabelFor(m => m.Name) @Html.TextBoxFor(m => m.Name)
+        @Html.LabelFor(m => m.Description) @Html.TextBoxFor(m => m.Description)
+
+        @if (!string.IsNullOrEmpty(ViewBag.CurrentFile))
+        {
+            <text><img id="Image" src="@Url.Content("/Images/" + ViewBag.CurrentFile)" alt="@ViewBag.CurrentFile" /></text>
+        }
+        else if (!string.IsNullOrEmpty(ViewBag.FileName))
+        {
+            <text><img id="Image" src="@Url.Content("/Images/" + ViewBag.FileName)" alt="@ViewBag.FileName" /></text>
+        }
+
+        <br />
+        <br />
+        <label for="ImageUploader">Image</label>  <input type="file" name="ImageUploader" id="ImageUploader" value="@ViewBag.Image" /><br />
+        <br />
+        <input type="submit" value="Save product" />
+        <input type="button" onclick="window.history.back()" value="Cancel" />
+    </text>
+}

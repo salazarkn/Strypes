@@ -1,0 +1,26 @@
+﻿
+@using (Html.BeginForm("AddProduct", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <text>
+
+        <label for="productname">Name</label> <input type="text" name="Name" id="productname" />
+        <label for="productdescription">Description</label>  <input type="text" name="Description" id="productdescription" />
+        <input type="hidden" name="Category" id="Category" value="@ViewBag.Category" />
+        <input type="hidden" name="CategoryId" id="CategoryId" value="@ViewBag.CategoryId" />
+        @if (!string.IsNullOrEmpty(ViewBag.CurrentFile))
+        {
+            <text><img id="Image" src="@Url.Content("/Images/" + ViewBag.CurrentFile)" alt="@ViewBag.CurrentFile" /></text>
+        }
+        else if (!string.IsNullOrEmpty(ViewBag.FileName))
+        {
+            <text><img id="Image" src="@Url.Content("/Images/" + ViewBag.FileName)" alt="@ViewBag.FileName" /></text>
+        }
+
+        <br />
+        <br />
+        <label for="ImageUploader">Image</label>  <input type="file" name="ImageUploader" id="ImageUploader" /><br />
+        <br />
+        <input type="submit" value="Add product" />
+    </text>
+}

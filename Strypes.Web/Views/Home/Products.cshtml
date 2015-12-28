@@ -1,0 +1,86 @@
+﻿<input type="hidden" id="categoryID" value=" " />
+@section scripts{
+
+    <script type="text/javascript">
+        function AddRow(row) {
+            $('#products>tbody').append('<tr><td><a href="/home/EditProduct/'
+                + row._id + '">Edit</a><button type="button" onclick="return DeleteRow(\''
+                + row._id + '\')">Delete</button></td><td>'
+                + row.Name + '</td><td>'
+                + row.Description + '</td><td>'
+                + row.Category + '</td><td><img src="/Images/'
+                + row.Image + '"   style="width:304px;height:228px;"></td></tr>');
+        }
+
+        $(document).ready(function () {
+            $()
+            $.ajax({
+                url: '/home/GetProductsByCategory?' + location.search.split('id=')[1],
+                success: function (result, status) {
+                    if (result.length > 0) {
+                        for (var i = 0; i < result.length; i++) {
+                            AddRow(result[i])
+                        }
+                    }
+                }
+            });
+        })
+
+        function AddProduct() {
+            if (location.search.split('id=')[1]) {
+                document.location.href = "/home/AddProduct?id=" + location.search.split('id=')[1];
+            }
+            else {
+                document.location.href = "/home/AddProduct?id=" + location.href.split('/')[5];
+            }
+        }
+
+        function DeleteRow(id) {
+            if (confirm("Are you sure delete this item?")) {
+                $.ajax({
+                    url: '/home/DeleteProduct',
+                    data: { id: id },
+                    success: function (result, status) {
+                        GridCategoryRefresh();
+                    }
+                });
+            }
+        }
+
+
+        function GridCategoryRefresh() {
+            $('#products>tbody').html("");
+            $.ajax({
+                url: '/home/GetProductsByCategory?' + location.search.split('id=')[1],
+                success: function (result, status) {
+                    if (result.length > 0) {
+                        for (var i = 0; i < result.length; i++) {
+                            AddRow(result[i]);
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
+}
+
+
+
+
+
+
+<button type="button" onclick="AddProduct()">Add Product</button>
+
+<table id="products">
+    <thead>
+        <tr>
+            <th>   </th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>

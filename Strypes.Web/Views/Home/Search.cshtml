@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Strypes task";
+}
+@section scripts{
+
+    <script type="text/javascript">
+
+
+
+        function Search() {
+            $('#result').html("");
+
+
+            $.ajax({
+                url: '/home/SearchBy',
+                data: {
+                    search: $('#search').val(),
+                    table: $('#dbtable').val(),
+                    col: $('#dbcolumn').val()
+                },
+                success: function (result, status) {  
+                    if (result.Table == "Product") {
+                        $('#result').append("<thead><tr><th>Id</th><th>Product Name</th> <th>Description</th ><th>Category</th ><th>Image</th> </tr></thead><tbody></tbody>")
+                        if (result.Records) {
+                            for (var i = 0; i < result.Records.length; i++) {
+                                $('#result>tbody').append('<tr><td>' + result.Records[i]._id + '</td><td>' + result.Records[i].Name + '</td><td>' + result.Records[i].Description + '</td><td>' + result.Records[i].Category + '</td><td><img src="/Images/' + result.Records[i].Image + '"   style="width:304px;height:228px;"></td></tr>');
+
+                            }
+                        }
+                    } else if (result.Table == "Category") {
+                        $('#result').append("<thead><tr><th>Id</th><th>Category Name</th> <th>Description</th>  </tr></thead><tbody></tbody>")
+                        if (result.Records) {
+                            for (var i = 0; i < result.Records.length; i++) {
+                                $('#result>tbody').append('<tr><td>' + result.Records[i]._id + '</td><td>' + result.Records[i].Name + '</td><td>' + result.Records[i].Description + '</td><td></td></tr>');
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+
+    </script>
+}
+
+
+<label for="dbtable">Search in </label>
+
+<select id="dbtable">
+    <option value="Category">Category</option>
+    <option value="Product">Product</option>
+</select>
+
+<label for="dbcolumn">by</label>
+
+<select id="dbcolumn">
+    <option value="ID">ID</option>
+    <option value="Name">Name</option>
+</select>
+
+<br />
+<input type="text" id="search" />
+
+
+<button type="button" onclick="Search()">Search</button>
+
+<table id="result"></table>
+

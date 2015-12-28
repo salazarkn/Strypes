@@ -1,0 +1,141 @@
+﻿@section scripts{
+
+    <script type="text/javascript">
+        function AddRow(row, index) {
+            $('#category>tbody').append('<tr id="row_' + index + '"><td>' + row.Name + '</td><td>' + row.Description + '</td><td><button type="button" onclick="EditRow(\'' + row._id + '\',' + index + ')">Edit</button><button type="button" onclick="return DeleteRow(\'' + row._id + '\')">Delete</button><a href="/home/products?id=' + row._id + '">View</a></td></tr>');
+        }
+
+        function DeleteRow(id) {
+            if (confirm("Are you sure delete this item?")) {
+                $.ajax({
+                    url: '/home/DeleteCategory',
+                    data: { id: id },
+                    success: function (result, status) {
+                        GridCategoryRefresh();
+                    }
+                });
+            }
+        }
+
+        function EditRow(id, index) {
+            $("#editcategoryname").val($($("#row_" + index).find('td')[0]).text()),
+            $("#editcategorydescription").val($($("#row_" + index).find('td')[1]).text())
+            $("#categoryid").val(id)
+            $("#editCategoryDialog").dialog("open");
+        }
+
+        $(document).ready(function () {
+            $.ajax({
+                url: '/home/GetCategories',
+                success: function (result, status) {
+                    if (result.length > 0) {
+                        for (var i = 0; i < result.length; i++) {
+                            AddRow(result[i], i);
+                        }
+                    }
+                }
+            });
+
+            $('#editCategoryDialog').dialog({
+                autoOpen: false,
+                title: 'Edit Category',
+                buttons: {
+                    OK: function () {
+                        $.ajax({
+                            success: function () {
+                                $("#editCategoryDialog").dialog("close");
+                                GridCategoryRefresh();
+                            },
+                            url: '/home/EditCategory',
+                            data: {
+                                _id: $('#categoryid').val(),
+                                Name: $("#editcategoryname").val(),
+                                Description: $("#editcategorydescription").val()
+                            }
+                        });
+                    },
+                    Cancel: function () { $("#editCategoryDialog").dialog("close"); }
+                }
+            });
+
+            $("#addCategoryDialog").dialog({
+                autoOpen: false,
+                open: function (event, ui) {
+                    $("#categoryname").val(""),
+                     $("#categorydescription").val("")
+                },
+                title: 'Add Category',
+                buttons: {
+                    OK: function () {
+                        $.ajax({
+                            success: function () {
+                                $("#addCategoryDialog").dialog("close");
+                                GridCategoryRefresh();
+                            },
+                            url: '/home/AddCategory',
+                            data: {
+                                Name: $("#categoryname").val(),
+                                Description: $("#categorydescription").val()
+                            }
+                        });
+                    },
+                    Cancel: function () {
+                        $("#addCategoryDialog").dialog("close");
+                    }
+                }
+            });
+        })
+
+
+
+        function AddCategory() {
+            $("#addCategoryDialog").dialog("open");
+        }
+
+
+
+        function GridCategoryRefresh() {
+            $('#category>tbody').html("");
+            $.ajax({
+                url: '/home/GetCategories',
+                success: function (result, status) {
+                    if (result.length > 0) {
+                        for (var i = 0; i < result.length; i++) {
+                            AddRow(result[i], i);
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
+}
+
+
+
+
+<div id="addCategoryDialog">
+    <label for="categoryname">Name</label> <input type="text" id="categoryname" />
+    <label for="categorydescription">Description</label> <input type="text" id="categorydescription" />
+</div>
+
+<div id="editCategoryDialog">
+    <label for="editcategoryname">Name</label> <input type="text" id="editcategoryname" />
+    <label for="editcategorydescription">Description</label> <input type="text" id="editcategorydescription" />
+    <input type="hidden" id="categoryid" />
+</div>
+
+
+
+<button type="button" onclick="AddCategory()">Add Category</button>
+
+<table id="category">
+    <thead>
+        <tr>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>

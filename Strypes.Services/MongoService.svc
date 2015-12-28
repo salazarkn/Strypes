@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Strypes.Services.MongoService" CodeBehind="MongoService.svc.cs" %>
